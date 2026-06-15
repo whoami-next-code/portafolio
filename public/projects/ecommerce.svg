@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none" role="img" aria-label="Vista previa e-commerce">
+  <rect width="800" height="500" fill="#0f0f14"/>
+  <rect x="40" y="40" width="720" height="60" rx="12" fill="#1a1a24"/>
+  <rect x="40" y="130" width="340" height="330" rx="16" fill="#252532"/>
+  <rect x="400" y="130" width="360" height="150" rx="16" fill="#2a2a3a"/>
+  <rect x="400" y="300" width="170" height="160" rx="12" fill="#3b3b52"/>
+  <rect x="590" y="300" width="170" height="160" rx="12" fill="#4f46e5" opacity="0.6"/>
+  <circle cx="680" cy="70" r="16" fill="#6366f1"/>
+</svg>

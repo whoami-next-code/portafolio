@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none" role="img" aria-label="Vista previa dashboard">
+  <rect width="800" height="500" fill="#0a0f14"/>
+  <rect x="40" y="40" width="200" height="420" rx="12" fill="#141b24"/>
+  <rect x="260" y="40" width="500" height="120" rx="12" fill="#1e293b"/>
+  <rect x="260" y="180" width="240" height="130" rx="12" fill="#0891b2" opacity="0.3"/>
+  <rect x="520" y="180" width="240" height="130" rx="12" fill="#6366f1" opacity="0.3"/>
+  <path d="M280 360 Q400 300 520 360 T760 360" stroke="#22d3ee" stroke-width="3" fill="none"/>
+  <circle cx="400" cy="360" r="6" fill="#22d3ee"/>
+  <circle cx="520" cy="340" r="6" fill="#22d3ee"/>
+  <circle cx="640" cy="350" r="6" fill="#22d3ee"/>
+</svg>

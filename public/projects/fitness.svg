@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none" role="img" aria-label="Vista previa app fitness">
+  <rect width="800" height="500" fill="#140a0a"/>
+  <rect x="280" y="30" width="240" height="440" rx="32" fill="#1f1414" stroke="#f97316" stroke-width="2"/>
+  <circle cx="400" cy="120" r="40" fill="#f97316" opacity="0.3"/>
+  <rect x="320" y="200" width="160" height="8" rx="4" fill="#fb923c"/>
+  <rect x="320" y="230" width="120" height="8" rx="4" fill="#fdba74"/>
+  <rect x="320" y="280" width="160" height="60" rx="12" fill="#ea580c" opacity="0.5"/>
+  <rect x="320" y="360" width="160" height="60" rx="12" fill="#c2410c" opacity="0.4"/>
+</svg>
