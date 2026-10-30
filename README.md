@@ -1,10 +1,10 @@
-# Portafolio — Luis Fernando Cunyas Pacheco
+# Luis Fernando (WhoAmI)
 
-Portafolio personal con Next.js 16, animaciones 3D, scroll avanzado y despliegue optimizado para [Railway](https://railway.app).
+Portafolio personal en [whoami.business](https://whoami.business). Next.js 16, App Router, TypeScript.
 
 ## Stack
 
-- Next.js 16 (App Router, standalone output)
+- Next.js 16 (App Router)
 - TypeScript, Tailwind CSS v4
 - Framer Motion, Lenis, React Three Fiber
 
@@ -12,64 +12,62 @@ Portafolio personal con Next.js 16, animaciones 3D, scroll avanzado y despliegue
 
 ```bash
 npm install
-cp .env.example .env.local   # opcional
+cp .env.example .env.local
 npm run dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000).
 
-## Despliegue en Railway (desde GitHub)
-
-### 1. Subir a GitHub
-
-```bash
-git init
-git add .
-git commit -m "feat: portafolio personal Next.js para Railway"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/portafolio.git
-git push -u origin main
-```
-
-### 2. Conectar en Railway
-
-1. Entra a [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub repo**
-2. Selecciona el repositorio `portafolio`
-3. Railway detecta Node.js y usa los scripts de `package.json`
-
-### 3. Variables de entorno (Railway → Settings → Variables)
+## Variables de entorno
 
 | Variable | Valor | Requerido |
 |----------|-------|-----------|
-| `HOSTNAME` | `0.0.0.0` | Sí |
-| `NEXT_PUBLIC_SITE_URL` | URL pública de Railway (ej. `https://portafolio-production.up.railway.app`) | Recomendado |
-| `RESEND_API_KEY` | API key de Resend | Opcional (contacto) |
-| `CONTACT_EMAIL` | Email destino del formulario | Opcional (contacto) |
+| `NEXT_PUBLIC_SITE_URL` | `https://whoami.business` | Sí, en producción |
 
-> `PORT` lo asigna Railway automáticamente. No hace falta definirlo.
+Definirla también en Vercel → Project → Settings → Environment Variables, para Production.
 
-### 4. Build y start (ya configurados)
+## Despliegue en Vercel
 
-- **Build:** `npm run build` (genera `.next/standalone` + copia assets)
-- **Start:** `node .next/standalone/server.js` (definido en `railway.toml` y `package.json`)
+1. Sube el repositorio a GitHub.
+2. En [vercel.com](https://vercel.com) → **Add New** → **Project** → importa el repo.
+3. Framework preset: **Next.js**. Build: `npm run build`. Output: automático de Next.js.
+4. Añade `NEXT_PUBLIC_SITE_URL=https://whoami.business`.
+5. Deploy.
 
-### 5. Dominio público
+Vercel no usa `npm start`. No hace falta `output: "standalone"`.
 
-En Railway → tu servicio → **Settings** → **Networking** → **Generate Domain**.
+## Dominio whoami.business (Hostinger → Vercel)
 
-Actualiza `NEXT_PUBLIC_SITE_URL` con la URL generada y redeploya.
+1. En Vercel → Project → Settings → Domains → añade `whoami.business` y `www.whoami.business`.
+2. En Hostinger DNS:
+   - Apex (`@`): registro **A** a `76.76.21.21` (IP de Vercel), o los registros que Vercel muestre en ese momento.
+   - `www`: registro **CNAME** a `cname.vercel-dns.com`.
+3. En Vercel, elige `whoami.business` como dominio primario (redirige `www` → apex, o al revés, según elijas).
+4. Espera la propagación DNS y verifica el certificado HTTPS.
+
+No cambies DNS hasta tener el proyecto desplegado y las instrucciones actuales de Vercel a la vista: las IPs/CNAME pueden actualizarse.
+
+## Google Search Console
+
+1. Crea una propiedad de **dominio** `whoami.business`.
+2. Copia el registro TXT de verificación.
+3. Añádelo en los DNS de Hostinger.
+4. Verifica la propiedad.
+5. Envía `https://whoami.business/sitemap.xml`.
+6. Inspecciona `https://whoami.business/` y solicita indexación cuando Google lo permita.
 
 ## Scripts
 
 | Comando | Descripción |
 |---------|-------------|
 | `npm run dev` | Desarrollo |
-| `npm run build` | Build producción |
-| `npm run start` | Servidor standalone |
+| `npm run build` | Build de producción |
+| `npm run start` | Servidor local de producción |
 | `npm run lint` | ESLint |
 
 ## Personalización
 
 - `src/data/site.ts` — datos personales y GitHub
 - `src/data/projects.ts` — proyectos del portafolio
+- `src/lib/seo.ts` — título y descripción de búsqueda
 - `public/images/` — fotos y capturas

@@ -12,13 +12,6 @@ const HeroScene = dynamic(
   { ssr: false, loading: () => null },
 );
 
-const stats = [
-  { value: "5+", label: "Años de experiencia", color: "from-indigo-400 to-violet-400" },
-  { value: "16+", label: "Repos en GitHub", color: "from-sky-400 to-cyan-400" },
-  { value: "2", label: "Proyectos en Railway", color: "from-violet-400 to-fuchsia-400" },
-  { value: "100%", label: "Compromiso", color: "from-emerald-400 to-teal-400" },
-];
-
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -26,9 +19,8 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <section
@@ -40,130 +32,78 @@ export function Hero() {
       <HeroScene />
 
       <motion.div
-        style={{ y, opacity, scale }}
-        className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-24 lg:grid-cols-[1fr_auto]"
+        style={{ y, opacity }}
+        className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 px-6 pb-24 lg:grid-cols-[minmax(0,1fr)_300px]"
       >
         <div>
-          <motion.p
-            className="mb-4 inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 text-sm text-theme-muted"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
+          <p className="mb-6 text-sm text-[#b4becd]">
+            <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 align-middle" />
             {siteConfig.availability}
-          </motion.p>
+            <span className="mx-2 text-white/20">·</span>
+            {siteConfig.location}
+          </p>
 
-          <motion.h1
+          <h1
             id="hero-heading"
-            className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight text-theme sm:text-6xl lg:text-7xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7 }}
+            className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-theme sm:text-6xl lg:text-[4.25rem]"
           >
-            {siteConfig.nameDisplay.primary}{" "}
-            <span className="gradient-text">{siteConfig.nameDisplay.secondary}</span>
-          </motion.h1>
+            {siteConfig.headline}
+          </h1>
 
-          <motion.p
-            className="mt-2 text-xl font-medium text-indigo-300 sm:text-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            {siteConfig.role}
-          </motion.p>
+          <p className="mt-4 text-lg font-medium text-[#e08a48] sm:text-xl">
+            {siteConfig.name}
+          </p>
 
-          <motion.p
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-theme-muted"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.65, duration: 0.6 }}
-          >
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-theme-muted sm:text-lg">
             {siteConfig.tagline}
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="mt-10 flex flex-wrap gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
+          <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="#proyectos"
-              className="shimmer-btn rounded-full bg-gradient-to-r from-indigo-500 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition-transform hover:scale-[1.03] hover:shadow-xl hover:shadow-indigo-500/40"
+              className="shimmer-btn rounded-full bg-[#e08a48] px-7 py-3 text-sm font-semibold text-[#10141c] transition-transform hover:scale-[1.02]"
             >
-              Ver proyectos
+              Ver trabajo
             </Link>
             <Link
-              href={siteConfig.social.github}
+              href={siteConfig.whatsapp.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="glow-border rounded-full glass-card px-8 py-3.5 text-sm font-semibold text-theme transition-all hover:text-indigo-300 hover:shadow-md"
+              className="rounded-full border border-white/12 px-7 py-3 text-sm font-semibold text-theme transition-colors hover:border-[#25D366]/50 hover:text-[#25D366]"
             >
-              GitHub →
+              WhatsApp
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-          >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="glass-card glass-card-hover glow-border rounded-2xl p-4 text-center sm:text-left"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + i * 0.1 }}
-              >
-                <p className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+          <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+            {siteConfig.stats.map((stat) => (
+              <div key={stat.label}>
+                <dt className="text-xs text-theme-muted">{stat.label}</dt>
+                <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-theme">
                   {stat.value}
-                </p>
-                <p className="mt-1 text-xs text-theme-muted">{stat.label}</p>
-              </motion.div>
+                </dd>
+              </div>
             ))}
-          </motion.div>
+          </dl>
         </div>
 
-        <motion.div
-          className="relative mx-auto hidden lg:block"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-sky-500/20 blur-2xl glow-pulse" />
-          <div className="glow-border relative h-[420px] w-[320px] overflow-hidden rounded-3xl glass-card shadow-2xl shadow-indigo-500/20 ring-1 ring-white/10">
+        <div className="relative mx-auto w-[200px] lg:w-[280px]">
+          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-orange-400/25 via-indigo-500/20 to-violet-500/10 blur-2xl" />
+          <div className="relative h-[280px] w-[200px] overflow-hidden rounded-[1.6rem] border border-white/15 bg-white/5 shadow-2xl shadow-indigo-950/40 lg:h-[420px] lg:w-[280px]">
             <Image
               src={siteConfig.profileImage}
               alt={`Foto de ${siteConfig.name}`}
               fill
               className="object-cover object-top"
-              sizes="320px"
-              priority
+              sizes="(max-width: 1024px) 200px, 280px"
+              preload
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#161b26]/95 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-5">
-              <p className="font-semibold text-theme">{siteConfig.name}</p>
-              <p className="text-sm text-indigo-300">{siteConfig.role}</p>
-            </div>
           </div>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        aria-hidden="true"
-      >
-        <div className="h-10 w-6 rounded-full border-2 border-white/20 p-1">
-          <div className="mx-auto h-2 w-1 rounded-full bg-indigo-400" />
+          <p className="mt-4 text-sm leading-snug text-theme-muted">
+            {siteConfig.role}
+            <br />
+            {siteConfig.specialty}
+          </p>
         </div>
       </motion.div>
     </section>

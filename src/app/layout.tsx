@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Syne } from "next/font/google";
 import { siteConfig } from "@/data/site";
+import { buildJsonLd } from "@/lib/json-ld";
+import { seo } from "@/lib/seo";
+import { CANONICAL_SITE_URL, getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,31 +18,52 @@ const syne = Syne({
   display: "swap",
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
+const canonicalUrl = `${CANONICAL_SITE_URL}/`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.role}`,
-    template: `%s | ${siteConfig.name}`,
+    default: seo.title,
+    template: `%s | ${seo.brand}`,
   },
-  description: siteConfig.tagline,
-  keywords: [...siteConfig.skills, "portafolio", "desarrollador"],
-  authors: [{ name: siteConfig.name }],
+  description: seo.description,
+  applicationName: seo.brand,
+  creator: seo.brand,
+  publisher: seo.brand,
+  authors: [{ name: siteConfig.name, url: canonicalUrl }],
+  alternates: {
+    canonical: canonicalUrl,
+  },
   openGraph: {
     type: "website",
-    locale: "es_ES",
-    url: siteUrl,
-    title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.tagline,
-    siteName: siteConfig.name,
+    locale: "es_PE",
+    url: canonicalUrl,
+    title: seo.title,
+    description: seo.description,
+    siteName: seo.brand,
   },
-  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.title,
+    description: seo.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  icons: {
+    icon: [{ url: "/icon", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#161b26",
+  themeColor: "#10141c",
   width: "device-width",
   initialScale: 1,
 };
@@ -49,9 +73,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = buildJsonLd();
+
   return (
-    <html lang="es" className={`${inter.variable} ${syne.variable}`}>
-      <body className="min-h-screen bg-[#161b26] font-sans text-theme antialiased">
+    <html lang="es" className={`${inter.variable} ${syne.variable} bg-[#10141c]`}>
+      <body className="min-h-screen bg-[#10141c] font-sans text-[#e9eef6] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

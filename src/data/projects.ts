@@ -1,11 +1,15 @@
 export type Project = {
   id: string;
   title: string;
+  kind: string;
   description: string;
-  longDescription: string;
+  problem: string;
+  built: string;
+  outcome: string;
   tags: string[];
   image: string;
-  gradient: string;
+  imagePosition: "top" | "left";
+  accent: "warm" | "cool";
   links: {
     live?: string;
     github?: string;
@@ -15,32 +19,112 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "lca",
+    title: "La Casa del Accesorio",
+    kind: "Catálogo + cotización",
+    description:
+      "Vitrina de piezas aftermarket con fotos 360°, catálogo filtrable y cotización por WhatsApp.",
+    problem:
+      "Un taller de accesorios no puede prometer que una pieza calce sin año, versión y una foto del auto.",
+    built:
+      "Landing con auto interactivo, catálogo paginado, admin y flujo de cotización a WhatsApp. Next.js + Supabase.",
+    outcome:
+      "En producción en lca.whoami.business: el cliente toca la pieza, filtra y abre el mensaje listo.",
+    tags: ["Next.js", "Supabase", "WhatsApp", "Vercel"],
+    image: "/images/lca.png",
+    imagePosition: "top",
+    accent: "warm",
+    links: {
+      live: "https://lca.whoami.business/",
+      github: "https://github.com/whoami-next-code/casa-del-accesorio",
+    },
+    featured: true,
+  },
+  {
+    id: "crr",
+    title: "CRR Corredores de Seguros",
+    kind: "Sitio institucional",
+    description:
+      "Web de un corredor en Huancayo: personas, empresas y microseguros, con formulario de asesoría.",
+    problem:
+      "CRR necesitaba una cara pública seria: no vender primas en la web, sí orientar y captar el caso.",
+    built:
+      "Sitio Next.js con soluciones por rubro, registro SBS visible, contacto y políticas. Desplegado en Vercel.",
+    outcome:
+      "En crr-blue.vercel.app: un visitante elige qué proteger y pide asesoría sin que la página calcule coberturas.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    image: "/images/crr.png",
+    imagePosition: "top",
+    accent: "cool",
+    links: {
+      live: "https://crr-blue.vercel.app/",
+      github: "https://github.com/whoami-next-code/crr",
+    },
+    featured: true,
+  },
+  {
+    id: "blog-whoami",
+    title: "Blog WhoAmI",
+    kind: "Contenido técnico",
+    description:
+      "Guías prácticas de Windows, Node, npm, Docker y Next.js. Tema claro/oscuro y categorías.",
+    problem:
+      "Quería un canal propio de tutoriales accionables, no un dump de posts genéricos.",
+    built:
+      "Blog en Next.js con artículos, categorías, modo claro/oscuro y SEO. Publicado en Vercel.",
+    outcome:
+      "En blog-whoami.vercel.app: lecturas cortas para resolver un problema y seguir.",
+    tags: ["Next.js", "MDX", "Vercel"],
+    image: "/images/blog-whoami.png",
+    imagePosition: "top",
+    accent: "cool",
+    links: {
+      live: "https://blog-whoami.vercel.app/",
+      github: "https://github.com/whoami-next-code/blog-whoami",
+    },
+    featured: true,
+  },
+  {
     id: "industrias-sp",
     title: "Industrias SP — Refricentro",
+    kind: "Storefront B2B",
     description:
-      "Plataforma industrial con catálogo de productos, carrito de compras, autenticación y despliegue en Railway.",
-    longDescription:
-      "E-commerce B2B para soluciones industriales: landing con hero animado, catálogo de equipos, gestión de pedidos, secciones de servicios y contacto. Interfaz moderna con glassmorphism, diseño responsive y optimizada para producción en Railway.",
+      "La cara pública del negocio: catálogo industrial, pedidos y contacto, desplegada en Railway.",
+    problem:
+      "Una empresa industrial necesitaba vender equipos en la web, no una brochure.",
+    built:
+      "Landing, catálogo, carrito, autenticación y secciones de servicios. Next.js + Tailwind, responsive, listo para producción.",
+    outcome:
+      "Un canal B2B en línea, con la misma identidad visual naranja del negocio.",
     tags: ["Next.js", "React", "Tailwind CSS", "Railway"],
     image: "/images/refricentro.png",
-    gradient: "from-orange-300/60 to-amber-200/40",
+    imagePosition: "top",
+    accent: "warm",
     links: {
       live: "https://frontend-production-cacc.up.railway.app/",
+      github: "https://github.com/whoami-next-code/industriaSP",
     },
     featured: true,
   },
   {
     id: "industrias-sp-admin",
     title: "Industrias SP — Panel Admin",
+    kind: "Backoffice",
     description:
-      "Dashboard analítico con gestión de productos, pedidos, clientes, cotizaciones y reportes en tiempo real.",
-    longDescription:
-      "Panel de administración completo: métricas de negocio, sidebar con módulos de gestión, catálogo, ventas y atención al cliente. Tarjetas KPI, gráficos analíticos y UI clara orientada a productividad. Desplegado en Railway.",
-    tags: ["React", "Next.js", "Tailwind CSS", "Railway"],
+      "El mismo sistema, visto desde adentro: productos, pedidos, clientes, cotizaciones y reportes.",
+    problem:
+      "El storefront no sirve si nadie opera el catálogo, las ventas y la atención.",
+    built:
+      "Dashboard con sidebar por módulos, KPIs, catálogo, cotizaciones, pedidos y contactos. Misma stack, otro trabajo.",
+    outcome:
+      "Un backoffice para correr el negocio día a día, no solo para mostrarlo.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Railway"],
     image: "/images/admin.png",
-    gradient: "from-sky-300/60 to-indigo-200/40",
+    imagePosition: "left",
+    accent: "cool",
     links: {
       live: "https://admin-production-53c5.up.railway.app/",
+      github: "https://github.com/whoami-next-code/backendSP",
     },
     featured: true,
   },

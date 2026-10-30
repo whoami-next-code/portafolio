@@ -4,17 +4,25 @@ export const siteConfig = {
     primary: "Luis Fernando",
     secondary: "Cunyas Pacheco",
   },
-  role: "Full Stack Developer | Backend • Web • Mobile",
+  initials: "LF",
+  role: "Full Stack Developer",
+  specialty: "Backend, web y mobile",
+  headline: "Productos full stack que llegan a producción.",
   tagline:
-    "Eat bugs, ship code, repeat. Construyo sistemas escalables con enfoque en rendimiento y despliegue en producción.",
-  email: "whoaminode@gmail.com",
-  location: "Perú",
-  availability: "Disponible para proyectos freelance",
-  profileImage: "/images/luis fernando cp.png",
+    "Diseño el backend, la interfaz y el deploy. En línea ahora: La Casa del Accesorio, CRR Seguros y el blog WhoAmI — además del B2B de Industrias SP.",
+  motto: "Eat bugs, ship code, repeat.",
+  location: "Huancayo, Perú",
+  availability: "Disponible para freelance",
+  profileImage: "/images/profile.png",
+  whatsapp: {
+    display: "931 005 970",
+    e164: "51931005970",
+    url: "https://wa.me/51931005970?text=Hola%20Luis%2C%20vi%20tu%20portafolio%20y%20quiero%20hablar%20de%20un%20proyecto.",
+  },
   social: {
     github: "https://github.com/whoami-next-code",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    linkedin:
+      "https://www.linkedin.com/in/luis-fernando-cunyas-pacheco-9a286a3b5",
   },
   github: {
     url: "https://github.com/whoami-next-code",
@@ -22,41 +30,76 @@ export const siteConfig = {
     displayName: "WhoAmI",
     image: "/images/github.png",
     motto: "Eat bugs, ship code, repeat.",
-    repos: 16,
+    repos: 22,
+    featured: [
+      {
+        name: "casa-del-accesorio",
+        language: "TypeScript",
+        blurb: "La Casa del Accesorio — catálogo, 360° y cotización.",
+        url: "https://github.com/whoami-next-code/casa-del-accesorio",
+      },
+      {
+        name: "crr",
+        language: "TypeScript",
+        blurb: "CRR Corredores de Seguros, Huancayo.",
+        url: "https://github.com/whoami-next-code/crr",
+      },
+      {
+        name: "blog-whoami",
+        language: "TypeScript",
+        blurb: "Guías de Windows, Node y Next.js.",
+        url: "https://github.com/whoami-next-code/blog-whoami",
+      },
+      {
+        name: "OurStory",
+        language: "Dart",
+        blurb: "App mobile — el lado Flutter del stack.",
+        url: "https://github.com/whoami-next-code/OurStory",
+      },
+    ],
   },
-  skills: [
-    "TypeScript",
-    "Next.js",
-    "Node.js",
-    "NestJS",
-    "React",
-    "Python",
-    "Flutter",
-    "PostgreSQL",
-    "Supabase",
-    "Docker",
-    "AWS",
-    "Tailwind CSS",
-    "Railway",
+  stats: [
+    { value: "5+", label: "Años construyendo" },
+    { value: "22", label: "Repos públicos" },
+    { value: "5", label: "Sitios en producción" },
+    { value: "3", label: "Capas: API, web, mobile" },
+  ],
+  skillGroups: [
+    {
+      label: "Backend",
+      items: ["TypeScript", "Node.js", "NestJS", "Python", "PostgreSQL", "Supabase"],
+    },
+    {
+      label: "Web",
+      items: ["Next.js", "React", "Tailwind CSS"],
+    },
+    {
+      label: "Mobile",
+      items: ["Flutter", "Dart"],
+    },
+    {
+      label: "Infra",
+      items: ["Docker", "AWS", "Railway", "Vercel"],
+    },
   ],
   about: {
     intro:
-      "Soy desarrollador full stack (WhoAmI) apasionado por crear soluciones digitales que resuelven problemas reales. Me especializo en backend, web y mobile, con experiencia en interfaces modernas, arquitecturas escalables y despliegues en Railway — como el e-commerce y panel admin de Industrias SP.",
+      "Soy Luis Fernando (WhoAmI). Trabajo desde Huancayo construyendo productos de punta a punta. En producción: La Casa del Accesorio, CRR Corredores de Seguros, el blog WhoAmI, y el e-commerce B2B de Industrias SP con su panel de operación.",
     highlights: [
       {
-        title: "Backend • Web • Mobile",
+        title: "Un producto, no una landing",
         description:
-          "Stack completo con TypeScript, NestJS, Next.js, Flutter y bases de datos relacionales para productos end-to-end.",
+          "En Industrias SP no entregué solo la vitrina. El storefront y el backoffice viven juntos: catálogo, ventas y atención.",
       },
       {
-        title: "Diseño + código",
+        title: "Backend con criterio de producción",
         description:
-          "Combino criterio visual con buenas prácticas de ingeniería para entregar productos pulidos y fáciles de usar.",
+          "NestJS, PostgreSQL y despliegue con Docker en Railway o AWS. El código tiene que arrancar fuera de mi laptop.",
       },
       {
-        title: "Despliegue en producción",
+        title: "Web y mobile en el mismo oficio",
         description:
-          "Configuro builds optimizados, Docker, CI/CD y despliegues en Railway, AWS y entornos cloud.",
+          "Next.js cuando el producto es web. Flutter y Dart cuando tiene que vivir en el bolsillo.",
       },
     ],
   },

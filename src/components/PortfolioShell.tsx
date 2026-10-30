@@ -18,7 +18,7 @@ export function PortfolioShell() {
       <ScrollProgress />
       <a
         href="#inicio"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-[#e08a48] focus:px-4 focus:py-2 focus:text-[#10141c]"
       >
         Saltar al contenido
       </a>

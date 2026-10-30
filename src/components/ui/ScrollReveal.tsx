@@ -8,41 +8,26 @@ type ScrollRevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "none";
   once?: boolean;
-};
-
-const directionOffset = {
-  up: { y: 48, x: 0 },
-  down: { y: -48, x: 0 },
-  left: { x: 48, y: 0 },
-  right: { x: -48, y: 0 },
-  none: { x: 0, y: 0 },
 };
 
 export function ScrollReveal({
   children,
   className,
   delay = 0,
-  direction = "up",
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
-  const offset = directionOffset[direction];
+  const isInView = useInView(ref, { once, margin: "-60px" });
 
   return (
     <motion.div
       ref={ref}
       className={cn(className)}
-      initial={{ opacity: 0, x: offset.x, y: offset.y }}
-      animate={
-        isInView
-          ? { opacity: 1, x: 0, y: 0 }
-          : { opacity: 0, x: offset.x, y: offset.y }
-      }
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       transition={{
-        duration: 0.7,
+        duration: 0.45,
         delay,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
@@ -61,10 +46,10 @@ type StaggerContainerProps = {
 export function StaggerContainer({
   children,
   className,
-  stagger = 0.1,
+  stagger = 0.08,
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-48px" });
 
   const containerVariants: Variants = {
     hidden: {},
@@ -94,11 +79,11 @@ export function StaggerItem({
   className?: string;
 }) {
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 32 },
+    hidden: { opacity: 0, y: 14 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
+      transition: { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] },
     },
   };
 
