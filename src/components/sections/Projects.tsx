@@ -22,8 +22,9 @@ export function Projects() {
             Trabajo en producción
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-theme-muted">
-            Sitios en línea ahora: catálogo de accesorios, corredor de seguros
-            y blog técnico. Industrias SP queda como el par storefront + admin.
+            Sitios en línea ahora: catálogo de accesorios, La Merced PyK,
+            corredor de seguros y blog técnico. Industrias SP y La Merced
+            son pares storefront + admin.
           </p>
         </ScrollReveal>
 

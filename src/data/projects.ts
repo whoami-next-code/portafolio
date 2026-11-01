@@ -41,6 +41,49 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "la-merced",
+    title: "La Merced PyK",
+    kind: "E-commerce",
+    description:
+      "Tienda online de calzado, ropa y accesorios: catálogo, carrito, chat y promociones. En producción en Railway.",
+    problem:
+      "Multiservicios La Merced PyK necesitaba vender en línea con la misma cara de la tienda: catálogo, pedidos y atención.",
+    built:
+      "Storefront Next.js con catálogo filtrable, cuenta de cliente, carrito y chat. Desplegado en Railway.",
+    outcome:
+      "En rare-growth-production.up.railway.app: el visitante recorre el catálogo y compra sin pasar por un brochure.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Railway"],
+    image: "/images/la-merced.png",
+    imagePosition: "top",
+    accent: "warm",
+    links: {
+      live: "https://rare-growth-production.up.railway.app/",
+      github: "https://github.com/whoami-next-code/la_merced",
+    },
+    featured: true,
+  },
+  {
+    id: "la-merced-admin",
+    title: "La Merced PyK — Panel Admin",
+    kind: "Backoffice",
+    description:
+      "El mismo sistema, visto desde adentro: acceso autorizado para operar el catálogo y el día a día.",
+    problem:
+      "La vitrina no alcanza si nadie carga productos, pedidos y atención desde un panel propio.",
+    built:
+      "Panel administrativo con login restringido y dashboard. Misma stack, otro trabajo. En Railway.",
+    outcome:
+      "Un backoffice protegido: overflowing-analysis-production-0c04.up.railway.app/dashboard.",
+    tags: ["Next.js", "React", "Tailwind CSS", "Railway"],
+    image: "/images/la-merced-admin.png",
+    imagePosition: "top",
+    accent: "cool",
+    links: {
+      live: "https://overflowing-analysis-production-0c04.up.railway.app/dashboard",
+    },
+    featured: true,
+  },
+  {
     id: "crr",
     title: "CRR Corredores de Seguros",
     kind: "Sitio institucional",

@@ -9,7 +9,7 @@ export const siteConfig = {
   specialty: "Backend, web y mobile",
   headline: "Productos full stack que llegan a producción.",
   tagline:
-    "Diseño el backend, la interfaz y el deploy. En línea ahora: La Casa del Accesorio, CRR Seguros y el blog WhoAmI — además del B2B de Industrias SP.",
+    "Diseño el backend, la interfaz y el deploy. En línea ahora: La Casa del Accesorio, La Merced PyK, CRR Seguros y el blog WhoAmI — además del B2B de Industrias SP.",
   motto: "Eat bugs, ship code, repeat.",
   location: "Huancayo, Perú",
   availability: "Disponible para freelance",
@@ -61,7 +61,7 @@ export const siteConfig = {
   stats: [
     { value: "5+", label: "Años construyendo" },
     { value: "22", label: "Repos públicos" },
-    { value: "5", label: "Sitios en producción" },
+    { value: "7", label: "Sitios en producción" },
     { value: "3", label: "Capas: API, web, mobile" },
   ],
   skillGroups: [
@@ -84,7 +84,7 @@ export const siteConfig = {
   ],
   about: {
     intro:
-      "Soy Luis Fernando (WhoAmI). Trabajo desde Huancayo construyendo productos de punta a punta. En producción: La Casa del Accesorio, CRR Corredores de Seguros, el blog WhoAmI, y el e-commerce B2B de Industrias SP con su panel de operación.",
+      "Soy Luis Fernando (WhoAmI). Trabajo desde Huancayo construyendo productos de punta a punta. En producción: La Casa del Accesorio, La Merced PyK con su panel, CRR Corredores de Seguros, el blog WhoAmI, y el e-commerce B2B de Industrias SP.",
     highlights: [
       {
         title: "Un producto, no una landing",
