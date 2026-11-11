@@ -6,6 +6,8 @@ import { seo } from "@/lib/seo";
 import { CANONICAL_SITE_URL, getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
+const GTM_ID = "GTM-K4V97M7B";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -77,7 +79,28 @@ export default function RootLayout({
 
   return (
     <html lang="es" className={`${inter.variable} ${syne.variable} bg-[#10141c]`}>
+      <head>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());",
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-[#10141c] font-sans text-[#e9eef6] antialiased">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
