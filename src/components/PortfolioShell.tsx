@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { GitHubSection } from "@/components/sections/GitHubSection";
 import { About } from "@/components/sections/About";
+import { Services } from "@/components/sections/Services";
 import { Contact } from "@/components/sections/Contact";
 import { BackgroundOrbs } from "@/components/ui/BackgroundOrbs";
 
@@ -18,7 +19,7 @@ export function PortfolioShell() {
       <ScrollProgress />
       <a
         href="#inicio"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-[#e08a48] focus:px-4 focus:py-2 focus:text-[#10141c]"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-[#b9a6ff] focus:px-4 focus:py-2 focus:text-[#090910]"
       >
         Saltar al contenido
       </a>
@@ -31,6 +32,8 @@ export function PortfolioShell() {
         <GitHubSection />
         <div className="section-divider mx-auto max-w-6xl" />
         <About />
+        <div className="section-divider mx-auto max-w-6xl" />
+        <Services />
         <div className="section-divider mx-auto max-w-6xl" />
         <Contact />
       </main>

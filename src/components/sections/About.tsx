@@ -17,6 +17,7 @@ export function About() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr]">
           <ScrollReveal>
+            <p className="whoami-eyebrow">03 / SOBRE MÍ</p>
             <h2
               id="about-heading"
               className="text-4xl font-bold tracking-tight text-theme sm:text-5xl"
@@ -52,7 +53,7 @@ export function About() {
                     href={siteConfig.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-[#e08a48]"
+                    className="transition-colors hover:text-[#b9a6ff]"
                   >
                     Ver perfil
                   </a>
@@ -62,13 +63,11 @@ export function About() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.08}>
-            <div className="space-y-6">
+            <div className="whoami-bento" aria-label="Tecnologías">
               {siteConfig.skillGroups.map((group) => (
-                <div key={group.label}>
+                <div key={group.label} className="whoami-bento-tile">
                   <p className="text-xs text-theme-muted">{group.label}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-theme">
-                    {group.items.join(" · ")}
-                  </p>
+                  <div className="whoami-tags">{group.items.map(item => <span key={item}>{item}</span>)}</div>
                 </div>
               ))}
             </div>
@@ -78,7 +77,7 @@ export function About() {
         <StaggerContainer className="mt-20 grid gap-6 md:grid-cols-3">
           {siteConfig.about.highlights.map((item) => (
             <StaggerItem key={item.title}>
-              <div className="h-full border-t border-[#e08a48]/40 pt-6">
+              <div className="whoami-timeline-item h-full border-t border-[#b9a6ff]/40 pt-6">
                 <h3 className="text-lg font-semibold text-theme">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-theme-muted">
                   {item.description}

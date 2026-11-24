@@ -13,11 +13,12 @@ export function Contact() {
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <ScrollReveal>
+            <p className="whoami-eyebrow">05 / CONTACTO</p>
             <h2
               id="contact-heading"
-              className="text-4xl font-bold tracking-tight text-theme sm:text-5xl"
+              className="whoami-contact-heading text-theme"
             >
-              Hablemos por WhatsApp
+              De la idea a <span className="whoami-gradient">producción.</span>
             </h2>
             <p className="mt-4 max-w-xl text-lg text-theme-muted">
               Si tienes un backend, una web o una app que tiene que salir,
@@ -31,7 +32,7 @@ export function Contact() {
                 href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-theme-muted transition-colors hover:text-[#e08a48]"
+                className="text-theme-muted transition-colors hover:text-[#b9a6ff]"
               >
                 LinkedIn
               </a>
@@ -39,7 +40,7 @@ export function Contact() {
                 href={siteConfig.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-theme-muted transition-colors hover:text-[#e08a48]"
+                className="text-theme-muted transition-colors hover:text-[#b9a6ff]"
               >
                 GitHub
               </a>
@@ -56,7 +57,7 @@ export function Contact() {
                 href={siteConfig.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shimmer-btn mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#25D366] py-3.5 text-sm font-semibold text-[#10141c] transition-transform hover:scale-[1.01]"
+                className="shimmer-btn mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#25D366] py-3.5 text-sm font-semibold text-[#090910] transition-transform hover:scale-[1.01]"
               >
                 Abrir WhatsApp
               </a>
