@@ -11,6 +11,7 @@ const navLinks = [
   { href: "#proyectos", label: "Trabajo" },
   { href: "#github", label: "GitHub" },
   { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#servicios", label: "Servicios" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -49,9 +50,9 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "whoami-header fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-white/8 bg-[#10141c]/80 shadow-lg shadow-black/20 backdrop-blur-xl"
+          ? "border-b border-white/8 bg-[#090910]/80 shadow-lg shadow-black/20 backdrop-blur-xl"
           : "bg-transparent",
       )}
     >
@@ -63,10 +64,10 @@ export function Header() {
           href="#inicio"
           className="group flex items-center gap-2 text-sm font-semibold tracking-tight text-theme"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e08a48] text-xs font-bold text-[#10141c] transition-transform group-hover:scale-105">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#b9a6ff] text-xs font-bold text-[#090910] transition-transform group-hover:scale-105">
             {siteConfig.initials}
           </span>
-          <span className="hidden sm:inline">{siteConfig.name.split(" ")[0]}</span>
+          <span className="whoami-wordmark hidden sm:inline">WHOAMI<span>.</span></span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -74,6 +75,7 @@ export function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={activeSection === link.href.slice(1) ? "location" : undefined}
                 className={cn(
                   "rounded-full px-3 py-2 text-sm transition-colors duration-300",
                   activeSection === link.href.slice(1)
@@ -149,7 +151,7 @@ export function Header() {
           id="mobile-nav"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-t border-white/8 bg-[#10141c] px-6 py-4 lg:hidden"
+          className="border-t border-white/8 bg-[#090910] px-6 py-4 lg:hidden"
         >
           <ul className="space-y-1">
             {navLinks.map((link) => (
@@ -169,7 +171,7 @@ export function Header() {
               href={siteConfig.whatsapp.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl bg-[#25D366] px-4 py-3 text-center text-sm font-semibold text-[#10141c]"
+              className="block rounded-xl bg-[#25D366] px-4 py-3 text-center text-sm font-semibold text-[#090910]"
               onClick={() => setMobileOpen(false)}
             >
               WhatsApp
@@ -210,8 +212,9 @@ function MagneticLink({
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="shimmer-btn rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-medium text-[#10141c]"
+        className="shimmer-btn rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-medium text-[#090910]"
         onMouseMove={(e) => {
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
           const rect = e.currentTarget.getBoundingClientRect();
           x.set((e.clientX - rect.left - rect.width / 2) * 0.15);
           y.set((e.clientY - rect.top - rect.height / 2) * 0.15);
