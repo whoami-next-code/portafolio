@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --page-bg: #10141c;
+  --page-bg: #090910;
   --background-alt: #161c28;
   --surface: rgba(255, 255, 255, 0.045);
   --surface-hover: rgba(255, 255, 255, 0.08);
@@ -10,7 +10,7 @@
   --border: rgba(255, 255, 255, 0.09);
   --glass: rgba(16, 20, 28, 0.78);
   --accent: #7b8cff;
-  --accent-warm: #e08a48;
+  --accent-warm: #b9a6ff;
 }
 
 @theme inline {
@@ -22,7 +22,7 @@
 html,
 body {
   color-scheme: dark;
-  background: #10141c;
+  background: #090910;
 }
 
 html {
@@ -42,7 +42,7 @@ h3 {
 }
 
 ::selection {
-  background: rgba(224, 138, 72, 0.35);
+  background: rgba(185, 166, 255, 0.35);
   color: #fff;
 }
 
@@ -71,7 +71,7 @@ h3 {
 .glass-card-hover:hover {
   transform: translateY(-3px);
   background: var(--surface-hover);
-  border-color: rgba(224, 138, 72, 0.28);
+  border-color: rgba(185, 166, 255, 0.28);
 }
 
 .shimmer-btn {
@@ -139,7 +139,7 @@ h3 {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(224, 138, 72, 0.28),
+    rgba(185, 166, 255, 0.28),
     rgba(123, 140, 255, 0.18),
     transparent
   );
@@ -177,3 +177,44 @@ h3 {
 .perspective-\[1200px\] {
   perspective: 1200px;
 }
+
+/* WhoAmI V2: scoped design and progressive enhancement */
+:root { --accent:#b9a6ff; --accent-warm:#b9a6ff; --page-bg:#090910; --glass:rgba(15,14,25,.88); }
+html,body { background:#090910; }
+main section[id] { scroll-margin-top:100px; }
+.whoami-header { top:12px; left:12px; right:12px; max-width:1200px; margin-inline:auto; border:1px solid #ffffff18; border-radius:22px; background:rgba(15,14,25,.88); backdrop-filter:blur(18px); }
+.whoami-header [aria-current="location"] { background:#b9a6ff20; color:#e5dbff; }
+.whoami-wordmark { font-family:var(--font-display); font-weight:800; letter-spacing:-.045em; }
+.whoami-wordmark span,.whoami-eyebrow { color:#b9a6ff; }
+.whoami-eyebrow { font-size:.72rem; font-weight:600; letter-spacing:.16em; margin-bottom:16px; }
+.whoami-hero { isolation:isolate; background:radial-gradient(ellipse at 75% 35%,#5b389b35,transparent 45%),radial-gradient(ellipse at 10% 80%,#3855a522,transparent 50%); }
+.whoami-hero::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(#b9a6ff09 1px,transparent 1px),linear-gradient(90deg,#b9a6ff09 1px,transparent 1px); background-size:56px 56px; mask-image:linear-gradient(#000,transparent 90%); }
+.whoami-display { font-size:clamp(3rem,7.7vw,7.25rem); font-weight:800; line-height:.92; letter-spacing:-.07em; }
+.whoami-hero-line { display:block; animation:whoami-enter .85s cubic-bezier(.2,.75,.2,1) both; }
+.whoami-hero-line:nth-child(2) { animation-delay:.1s; }
+.whoami-hero-line:nth-child(3) { animation-delay:.2s; }
+@keyframes whoami-enter { from { transform:translateY(22px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.whoami-gradient { background:linear-gradient(115deg,#ede4ff,#b9a6ff 48%,#779aff); background-clip:text; color:transparent; }
+.whoami-metric { border:1px solid #ffffff14; background:#ffffff05; border-radius:14px; padding:12px; min-width:0; }
+.whoami-metric dd { color:#e0d5ff; }
+.whoami-portrait::after { content:"WHOAMI / 01"; position:absolute; top:12px; right:12px; color:#fff; background:#090910bd; border:1px solid #ffffff30; padding:5px 8px; border-radius:6px; font-size:9px; letter-spacing:.12em; }
+.whoami-rail-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; color:#aab2c5; font-size:.85rem; }
+.whoami-rail-controls div { display:flex; gap:8px; }
+.whoami-rail-controls button { width:44px; height:44px; border-radius:50%; border:1px solid #b9a6ff55; background:#b9a6ff10; cursor:pointer; color:#eee8ff; font-size:1.2rem; }
+.whoami-rail-controls button:hover { background:#b9a6ff30; }
+.whoami-rail { display:flex; align-items:stretch; gap:24px; padding:24px 4px 26px; overflow-x:auto; scroll-snap-type:x proximity; scrollbar-color:#7961b5 #191725; }
+.whoami-rail > article { flex:0 0 min(82%,580px); min-width:0; scroll-snap-align:start; }
+.whoami-project-card { height:100%; background:radial-gradient(circle at var(--spot-x,50%) var(--spot-y,0%),#a78bfa24,transparent 280px),#151421; }
+.whoami-project-index { position:absolute; top:16px; left:16px; z-index:2; border:1px solid #ffffff35; background:#090910d9; color:#f1e9ff; border-radius:8px; padding:7px 12px; font-size:.8rem; }
+.whoami-bento { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.whoami-bento-tile,.whoami-service { border:1px solid #ffffff17; border-radius:18px; padding:22px; background:linear-gradient(135deg,#b9a6ff0a,#ffffff03); transition:border-color .25s,background .25s; }
+.whoami-bento-tile:first-child { grid-column:1/-1; }
+.whoami-bento-tile:hover,.whoami-service:hover { border-color:#b9a6ff65; background:#b9a6ff0e; }
+.whoami-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.whoami-tags span { font-size:.75rem; border:1px solid #ffffff18; border-radius:7px; padding:5px 8px; }
+.whoami-timeline-item { position:relative; padding-left:14px; }
+.whoami-timeline-item::before { content:""; position:absolute; left:0; top:-4px; width:7px; height:7px; border-radius:50%; background:#b9a6ff; box-shadow:0 0 14px #b9a6ff; }
+.whoami-contact-heading { font-size:clamp(2.8rem,6vw,5.4rem); font-weight:800; letter-spacing:-.065em; line-height:1; }
+:focus-visible { outline:2px solid #b9a6ff; outline-offset:4px; }
+@media(max-width:640px) { .whoami-header { top:8px; left:8px; right:8px; } .whoami-rail > article { flex-basis:94%; } .whoami-bento { grid-template-columns:1fr; } .whoami-display { font-size:clamp(2.8rem,12vw,4.5rem); } .whoami-hero { min-height:auto; } }
+@media(prefers-reduced-motion:reduce) { .whoami-hero-line { animation:none; } .whoami-rail { scroll-snap-type:none; } }
