@@ -16,7 +16,7 @@ function WireRing() {
   return (
     <mesh ref={ref} position={[1.35, 0.1, -0.4]}>
       <torusGeometry args={[1.05, 0.018, 12, 64]} />
-      <meshBasicMaterial color="#e08a48" transparent opacity={0.55} />
+      <meshBasicMaterial color="#b9a6ff" transparent opacity={0.55} />
     </mesh>
   );
 }
@@ -32,7 +32,7 @@ function InnerKnot() {
   return (
     <mesh ref={ref} position={[1.35, 0.1, -0.4]}>
       <torusKnotGeometry args={[0.38, 0.07, 80, 8]} />
-      <meshBasicMaterial color="#7b8cff" wireframe transparent opacity={0.35} />
+      <meshBasicMaterial color="#779aff" wireframe transparent opacity={0.35} />
     </mesh>
   );
 }
@@ -56,7 +56,7 @@ export function HeroScene() {
       <Canvas
         camera={{ position: [0, 0, 4.2], fov: 42 }}
         dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       >
         <Scene />
       </Canvas>
