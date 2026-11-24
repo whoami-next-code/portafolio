@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -14,6 +14,7 @@ const HeroScene = dynamic(
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -26,13 +27,13 @@ export function Hero() {
     <section
       id="inicio"
       ref={ref}
-      className="relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="whoami-hero relative flex min-h-screen items-center overflow-hidden pt-32"
       aria-labelledby="hero-heading"
     >
-      <HeroScene />
+      {!reduced && <HeroScene />}
 
       <motion.div
-        style={{ y, opacity }}
+        style={reduced ? undefined : { y, opacity }}
         className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 px-6 pb-24 lg:grid-cols-[minmax(0,1fr)_300px]"
       >
         <div>
@@ -45,23 +46,25 @@ export function Hero() {
 
           <h1
             id="hero-heading"
-            className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-theme sm:text-6xl lg:text-[4.25rem]"
+            className="whoami-display text-theme"
           >
-            {siteConfig.headline}
+            <span className="whoami-hero-line">Diseño.</span>
+            <span className="whoami-hero-line">Construyo.</span>
+            <span className="whoami-hero-line whoami-gradient">Despliego.</span>
           </h1>
 
-          <p className="mt-4 text-lg font-medium text-[#e08a48] sm:text-xl">
+          <p className="mt-4 text-lg font-medium text-[#b9a6ff] sm:text-xl">
             {siteConfig.name}
           </p>
 
           <p className="mt-4 max-w-xl text-base leading-relaxed text-theme-muted sm:text-lg">
-            {siteConfig.tagline}
+            {siteConfig.headline} {siteConfig.tagline}
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="#proyectos"
-              className="shimmer-btn rounded-full bg-[#e08a48] px-7 py-3 text-sm font-semibold text-[#10141c] transition-transform hover:scale-[1.02]"
+              className="shimmer-btn rounded-full bg-[#b9a6ff] px-7 py-3 text-sm font-semibold text-[#090910] transition-transform hover:scale-[1.02]"
             >
               Ver trabajo
             </Link>
@@ -75,9 +78,9 @@ export function Hero() {
             </Link>
           </div>
 
-          <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+          <dl className="whoami-metrics mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {siteConfig.stats.map((stat) => (
-              <div key={stat.label}>
+              <div key={stat.label} className="whoami-metric">
                 <dt className="text-xs text-theme-muted">{stat.label}</dt>
                 <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-theme">
                   {stat.value}
@@ -87,8 +90,8 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="relative mx-auto w-[200px] lg:w-[280px]">
-          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-orange-400/25 via-indigo-500/20 to-violet-500/10 blur-2xl" />
+        <div className="whoami-portrait relative mx-auto w-[200px] lg:w-[280px]">
+          <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-violet-400/25 via-indigo-500/20 to-violet-500/10 blur-2xl" />
           <div className="relative h-[280px] w-[200px] overflow-hidden rounded-[1.6rem] border border-white/15 bg-white/5 shadow-2xl shadow-indigo-950/40 lg:h-[420px] lg:w-[280px]">
             <Image
               src={siteConfig.profileImage}
