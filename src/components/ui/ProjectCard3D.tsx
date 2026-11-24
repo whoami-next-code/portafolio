@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -14,6 +14,7 @@ type ProjectCard3DProps = {
 
 export function ProjectCard3D({ project, index }: ProjectCard3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -27,8 +28,10 @@ export function ProjectCard3D({ project, index }: ProjectCard3DProps) {
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     const rect = cardRef.current.getBoundingClientRect();
+    cardRef.current.style.setProperty('--spot-x', `${e.clientX - rect.left}px`);
+    cardRef.current.style.setProperty('--spot-y', `${e.clientY - rect.top}px`);
     mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
     mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
@@ -42,23 +45,23 @@ export function ProjectCard3D({ project, index }: ProjectCard3DProps) {
 
   return (
     <motion.article
-      className="perspective-[1200px]"
-      initial={{ opacity: 0, y: 24 }}
+      className="whoami-project perspective-[1200px]"
+      initial={reduced ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      transition={{ duration: 0.5, delay: Math.min(index, 3) * 0.06 }}
     >
       <motion.div
         ref={cardRef}
         className={cn(
-          "overflow-hidden rounded-2xl border bg-[#141a24]/80",
-          isWarm ? "border-[#e08a48]/25" : "border-indigo-400/20",
+          "whoami-project-card group overflow-hidden rounded-2xl border bg-[#151421]/80",
+          isWarm ? "border-[#b9a6ff]/25" : "border-indigo-400/20",
         )}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        style={reduced ? undefined : { rotateX, rotateY, transformStyle: "preserve-3d" }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-black/30">
+        <div className="relative aspect-[16/10] overflow-hidden bg-black/30"><span className="whoami-project-index" aria-hidden="true">/{String(index + 1).padStart(2, "0")}</span>
           <Image
             src={project.image}
             alt={`Captura de ${project.title}`}
@@ -78,7 +81,7 @@ export function ProjectCard3D({ project, index }: ProjectCard3DProps) {
           <p
             className={cn(
               "text-xs font-medium",
-              isWarm ? "text-[#e08a48]" : "text-indigo-300",
+              isWarm ? "text-[#b9a6ff]" : "text-indigo-300",
             )}
           >
             {project.kind}
@@ -121,8 +124,8 @@ export function ProjectCard3D({ project, index }: ProjectCard3DProps) {
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium",
                   isWarm
-                    ? "bg-[#e08a48] text-[#10141c]"
-                    : "bg-indigo-400 text-[#10141c]",
+                    ? "bg-[#b9a6ff] text-[#090910]"
+                    : "bg-indigo-400 text-[#090910]",
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
